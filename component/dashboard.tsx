@@ -1,9 +1,9 @@
 import { Card, CardBody, Group, Stack } from 'livi-poc-core';
 import dynamic from 'next/dynamic';
 
-interface WidgetProps {
-    src: string
-}
+
+const importMap = ['widget1/demo', 'widget2/demo', 'widget3/demo']
+
 const Widget1 = dynamic(() => import('widget1/demo'), { ssr: false, });
 const Widget2 = dynamic(() => import('widget2/demo'), { ssr: false, });
 const Widget3 = dynamic(() => import('widget3/demo'), { ssr: false, });
@@ -16,7 +16,7 @@ const Dashboard = () => {
                 <Stack spacing='xl'>
                     <Group spacing='xl' className='w-full'>
                         <div className='w-2/3'>
-                            <Widget1 />
+                             <Widget1 />
                         </div>
                         <div className='w-1/3'>
                             <Widget2 />
