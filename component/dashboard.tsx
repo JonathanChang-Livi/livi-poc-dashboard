@@ -3,8 +3,8 @@ import { Widget1, Widget2, Widget3 } from './widgets';
 
 const Dashboard = () => {
     return (
-        <Card>
-            <CardBody>
+        // <Card>
+        //     <CardBody>
                 <Stack spacing='xl'>
                     <Title className=' text-2xl text-primary font-black' override>Dashboard</Title>
                     <Group spacing='xl' className='w-full'>
@@ -20,8 +20,8 @@ const Dashboard = () => {
                     {/* <Widget src='https://livi-poc-widget3.vercel.app/_next/static/chunks/remoteEntry.js' itemKey='widget3/demo' /> */}
                     <Widget3 />
                 </Stack>
-            </CardBody>
-        </Card>
+        //     </CardBody>
+        // </Card>
     )
 }
 
