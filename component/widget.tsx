@@ -1,7 +1,19 @@
 import dynamic from "next/dynamic";
+import Script from "next/script";
+import path from "path";
 
-const Widget = (src: string) => dynamic(() => import(src), {ssr: false,});
+interface WidgetProps {
+    src: string
+    itemKey: string
+}
+const Widget = ({ src, itemKey }: WidgetProps) => {
+    const Wd = dynamic(() => import(itemKey), { ssr: false })
+    return (
+        <>
+            <script src={src} />
+            < Wd />
+        </>
+    )
+}
 
-// export const Widget1 = dynamic(() => import('widget1/demo'), {ssr: false,});
-// export const Widget2 = () => Widget('widget2/demo')
-// export const Widget3 = () => Widget('widget3/demo')
+export default Widget
