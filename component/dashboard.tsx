@@ -1,26 +1,12 @@
-import { Card, CardBody, Group, Stack } from 'livi-poc-core';
-import dynamic from 'next/dynamic';
-import Widget from './widget';
-
-const path = {
-    widget1: 'widget1/demo',
-    widget2: 'widget2/demo',
-    widget3: 'widget3/demo',
-}
-
-//@ts-ignore
-const Widget1 = dynamic(() => import('widget1/demo'), { ssr: false, });
-//@ts-ignore
-const Widget2 = dynamic(() => import('widget2/demo'), { ssr: false, });
-//@ts-ignore
-const Widget3 = dynamic(() => import('widget3/demo'), { ssr: false, });
+import { Card, CardBody, Group, Stack, Title } from 'livi-poc-core';
+import { Widget1, Widget2, Widget3 } from './widgets';
 
 const Dashboard = () => {
     return (
-        <Card className=' flex flex-col rounded-lg filter drop-shadow-md bg-white pt-8' override>
-            <CardBody className='p-4' override>
-                <div style={{ display: 'none' }} className='text-2xl text-primary font-extrabold'></div>
+        <Card>
+            <CardBody>
                 <Stack spacing='xl'>
+                    <Title className=' text-2xl text-primary font-black' override>Dashboard</Title>
                     <Group spacing='xl' className='w-full'>
                         <div className='w-2/3'>
                             <Widget1 />
