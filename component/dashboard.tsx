@@ -8,8 +8,11 @@ const path = {
     widget3: 'widget3/demo',
 }
 
+//@ts-ignore
 const Widget1 = dynamic(() => import('widget1/demo'), { ssr: false, });
+//@ts-ignore
 const Widget2 = dynamic(() => import('widget2/demo'), { ssr: false, });
+//@ts-ignore
 const Widget3 = dynamic(() => import('widget3/demo'), { ssr: false, });
 
 const Dashboard = () => {

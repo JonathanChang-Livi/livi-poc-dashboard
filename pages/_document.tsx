@@ -8,9 +8,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        {/* <script src="https://livi-poc-widget1.vercel.app/_next/static/chunks/remoteEntry.js" />
+        <script src="https://livi-poc-widget1.vercel.app/_next/static/chunks/remoteEntry.js" />
         <script src="https://livi-poc-widget2.vercel.app/_next/static/chunks/remoteEntry.js" />
-        <script src="https://livi-poc-widget3.vercel.app/_next/static/chunks/remoteEntry.js" /> */}
+        <script src="https://livi-poc-widget3.vercel.app/_next/static/chunks/remoteEntry.js" />
         <Head />
         <body>
           <Main />
