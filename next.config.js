@@ -3,7 +3,7 @@
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   webpack: (config, options) => { // webpack configurations
     const { isServer } = options;
     config.plugins.push(

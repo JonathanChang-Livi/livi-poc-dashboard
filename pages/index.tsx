@@ -7,11 +7,19 @@ const Home: NextPage = () => {
     <Card>
       <CardBody>
         <div style={{ display: 'none' }}
-          className='my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white pt-8  
-      w-full gap-5 text-secondary text-sm font-semibold mt-4
+          className='my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white overflow-y-auto
+      w-full h-full
+      p-3 pt-8 p-4 mt-4 p-2 px-3
+      text-base text-white bg-primary hover:scale-110 bg-secondary
+       text-secondary text-sm font-semibold
       bg-gradient-to-tr from-primary via-primary to-secondary-dark h-full justify-between items-end justify-end
-      p-2 px-3 bg-primary text-secondary font-black w-2/12 w-6/12 text-green-700 text-red-700
-      rounded-tr-lg rounded-bl-lg p-4
+      bg-primary text-secondary font-black text-green-700 text-red-700
+      rounded-tr-lg rounded-bl-lg
+      grid-cols-12
+      col-span-1 col-span-2 col-span-3 col-span-4 col-span-5 col-span-6
+      gap-1 gap-2 gap-3 gap-4 gap-5
+      space-x-1 space-x-2 space-x-3 space-x-4 space-x-5
+      space-y-1 space-y-2 space-y-3 space-y-4 space-y-5
       '></div>
         <Dashboard />
       </CardBody>

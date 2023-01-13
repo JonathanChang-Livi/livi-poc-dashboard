@@ -1,25 +1,32 @@
-import { Card, CardBody, Group, Stack, Title } from 'livi-poc-core';
-import { Widget1, Widget2, Widget3 } from './widgets';
+import { Button, Group, Stack, Title } from 'livi-poc-core';
+import { useState } from 'react';
+import DraggableWidgetLayout from './draggable';
+import { DraggableGridLayout, GridItemProps } from './grid';
+import { WidgetWrapper, Widget1, Widget2, Widget3, WidgetProps } from './widgets';
 
 const Dashboard = () => {
+    const [editMode, setEditMode] = useState(false)
+    const widgetList: GridItemProps[] = [
+        { id: 'livi-poc-widget1', order: 0, width: 4, height: 1, widget: <Widget1 /> },
+        { id: 'livi-poc-widget2', order: 1, width: 2, height: 1, widget: <Widget2 /> },
+        { id: 'livi-poc-widget3', order: 2, width: 6, height: 2, widget: <Widget3 /> },
+    ]
     return (
         // <Card>
         //     <CardBody>
-                <Stack spacing='xl'>
-                    <Title className=' text-2xl text-primary font-black' override>Dashboard</Title>
-                    <Group spacing='xl' className='w-full'>
-                        <div className='w-2/3'>
-                            <Widget1 />
-                            {/* <Widget src='https://livi-poc-widget1.vercel.app/_next/static/chunks/remoteEntry.js' itemKey='widget1/demo' /> */}
-                        </div>
-                        <div className='w-1/3'>
-                            {/* <Widget src='https://livi-poc-widget2.vercel.app/_next/static/chunks/remoteEntry.js' itemKey='widget2/demo' /> */}
-                            <Widget2 />
-                        </div>
-                    </Group>
-                    {/* <Widget src='https://livi-poc-widget3.vercel.app/_next/static/chunks/remoteEntry.js' itemKey='widget3/demo' /> */}
-                    <Widget3 />
-                </Stack>
+        <Stack spacing='xl'>
+            <Group className='justify-between'>
+                <Title className=' text-xl text-primary font-black' override>Dashboard</Title>
+                {
+                    !editMode ?
+                        <Button set='primary' className=' min-w-[80px]' onClick={() => setEditMode(true)}>Edit</Button>
+                        :
+                        <Button set='secondary' className=' min-w-[80px]' onClick={() => setEditMode(false)}>Save</Button>
+                }
+            </Group>
+            {/* <DraggableWidgetLayout spacing={3} editMode={editMode} list={widgetList}/> */}
+            <DraggableGridLayout items={widgetList} editMode={editMode}/>
+        </Stack>
         //     </CardBody>
         // </Card>
     )
