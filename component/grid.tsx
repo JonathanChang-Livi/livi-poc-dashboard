@@ -82,7 +82,7 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
             isBounded
             // useCSSTransforms
             isDraggable={editMode}
-            width={1200}
+            width={900}
         >
             {layout.map((x, i) => {
                 return (
