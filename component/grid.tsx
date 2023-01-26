@@ -15,6 +15,7 @@ interface GridLayoutProps {
     items: GridItemProps[],
     editMode: boolean
 }
+type WindowSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
     //   static defaultProps: Props = {
     //     className: "layout",
@@ -35,7 +36,7 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
     //     });
     // }
     const list = items.sort((a, b) => a.order > b.order ? 1 : -1)
-    const generateLayout = (l: GridItemProps[]): { i: string, w: number, h: number, x: number, y: number }[] => {
+    const generateLayout = (l: GridItemProps[], size: WindowSize): { i: string, w: number, h: number, x: number, y: number }[] => {
         return l.map((x, i, a) => {
             return {
                 i: x.id,
@@ -46,7 +47,6 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
             }
         })
     }
-    const layout = generateLayout(list)
 
     // const [list, setList] = React.useState(generateLayout(items.sort((a, b) => a.order > b.order ? 1 : -1)))
 
@@ -69,10 +69,17 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
     //     alert(JSON.stringify(newLayout))
     //     return newLayout
     // }
+
+    const layout = { 
+        lg: generateLayout(list, 'lg'),
+        md: generateLayout(list, 'md'), 
+        sm: generateLayout(list, 'sm'), 
+        xs: generateLayout(list, 'xs')
+    }
     return (
-        <ReactGridLayout
-            layout={layout}
-            cols={6}
+        <ResponsiveReactGridLayout
+            layouts={layout}
+            cols={{ lg: 6,  md: 6, sm: 2, xs: 1, xxs: 1 }}
             // onBreakpointChange={onBreakpointChange}
             // onLayoutChange={onLayoutChange}
             // onDrop={this.onDrop}
@@ -82,9 +89,8 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
             isBounded
             // useCSSTransforms
             isDraggable={editMode}
-            width={900}
         >
-            {layout.map((x, i) => {
+            {layout.md.map((x, i) => {
                 return (
                     <div key={x.i}>
                         {list[i].widget}
@@ -93,6 +99,6 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
             })
 
             }
-        </ReactGridLayout>
+        </ResponsiveReactGridLayout>
     )
 }

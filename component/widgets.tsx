@@ -52,7 +52,7 @@ const WidgetWrapper = ({ size, editMode, widget, index }: WidgetProps & WidgetPa
         >
           <div>
 
-            {/* {editMode ? <div className="absolute z-10 opacity-50 rounded-lg  top-0 left-0 right-0 bottom-0 select-none hover:bg-black hover:cursor-grab focus:cursor-grabbing"></div> : <></>} */}
+            {editMode ? <div className="absolute z-10 opacity-50 rounded-lg  top-0 left-0 right-0 bottom-0 select-none hover:bg-black hover:cursor-grab focus:cursor-grabbing"></div> : <></>}
             {widget}
           </div>
         </div>
