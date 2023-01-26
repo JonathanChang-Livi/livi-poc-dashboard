@@ -7,7 +7,7 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 export interface GridItemProps {
     id: string
     height: number
-    width: number
+    width?: undefined | { [key in WindowSize]: number }
     order: number
     widget: React.ReactNode
 }
@@ -15,7 +15,8 @@ interface GridLayoutProps {
     items: GridItemProps[],
     editMode: boolean
 }
-type WindowSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+type WindowSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
+const full = { lg: 6, md: 6, sm: 2, xs: 1, xxs: 1 }
 export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
     //   static defaultProps: Props = {
     //     className: "layout",
@@ -40,59 +41,53 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
         return l.map((x, i, a) => {
             return {
                 i: x.id,
-                w: x.width,
+                w: x.width === undefined ? full[size] : x.width[size],
                 h: x.height,
-                x: i === 0 ? 0 : a.filter((n, m) => m < i).map((y) => y.width).reduce((a, b) => a + b) % 6,
+                x: i === 0 ? 0 : a.filter((n, m) => m < i).map((y) => y.width === undefined ? full[size] : y.width[size]).reduce((a, b) => a + b) % 6,
                 y: i === 0 ? 0 : a.filter((n, m) => m < i).map((y) => y.height).reduce((a, b) => a + b) / 6,
             }
         })
     }
-
-    // const [list, setList] = React.useState(generateLayout(items.sort((a, b) => a.order > b.order ? 1 : -1)))
-
-    // const onLayoutChange = (layout: ReactGridLayout.Layout[]) => {
-    //     // alert(JSON.stringify(layout))
-    //     setList(tidyLayout(layout))
-    // }
-
-    // const tidyLayout = (layout: ReactGridLayout.Layout[]) => {
-    //     const sorted = layout.sort((a, b) => (a.y < b.y) || (a.y >= b.y && a.x < b.x) ? -1 : 1)
-    //     const newLayout: {i: string, x: number, y: number, h: number, w: number }[]= sorted.map((x, i, a) => {
-    //         return {
-    //             i: x.i,
-    //             h: x.h,
-    //             w: x.w,
-    //             x: i === 0 ? 0 : a.filter((n, m) => m < i).map((y) => y.w).reduce((a, b) => a + b) % 6,
-    //             y: i === 0 ? 0 : a.filter((n, m) => m < i).map((y) => y.h).reduce((a, b) => a + b) / 6,
-    //         }
-    //     })
-    //     alert(JSON.stringify(newLayout))
-    //     return newLayout
-    // }
-
-    const layout = { 
-        lg: generateLayout(list, 'lg'),
-        md: generateLayout(list, 'md'), 
-        sm: generateLayout(list, 'sm'), 
-        xs: generateLayout(list, 'xs')
+    const newLayout = (list: GridItemProps[]) => {
+        return {
+            lg: generateLayout(list, 'lg'),
+            md: generateLayout(list, 'md'),
+            sm: generateLayout(list, 'sm'),
+            xs: generateLayout(list, 'xs')
+        }
     }
+
+    const [layouts, setLayouts] = React.useState(newLayout(list))
+
+    const onLayoutChange = (layout: ReactGridLayout.Layout[]) => {
+        // alert(JSON.stringify(layout))
+        setLayouts(newLayout(tidyLayout(layout)))
+    }
+
+    const tidyLayout = (layout: ReactGridLayout.Layout[]) => {
+        const sorted = layout.map(x => x.i).map(x => list.find(y => y.id === x)!!)
+        // console.log(JSON.stringify(layout))
+        return sorted
+    }
+
     return (
         <ResponsiveReactGridLayout
-            layouts={layout}
-            cols={{ lg: 6,  md: 6, sm: 2, xs: 1, xxs: 1 }}
+            layouts={layouts}
+            cols={full}
             // onBreakpointChange={onBreakpointChange}
-            // onLayoutChange={onLayoutChange}
+            onLayoutChange={onLayoutChange}
             // onDrop={this.onDrop}
             // WidthProvider option
             // measureBeforeMount={true}
+            breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
             compactType={'vertical'}
             isBounded
             // useCSSTransforms
             isDraggable={editMode}
         >
-            {layout.md.map((x, i) => {
+            {list.map((x, i) => {
                 return (
-                    <div key={x.i}>
+                    <div key={x.id}>
                         {list[i].widget}
                     </div>
                 )
