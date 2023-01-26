@@ -79,7 +79,7 @@ export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
             // onDrop={this.onDrop}
             // WidthProvider option
             // measureBeforeMount={true}
-            breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+            breakpoints={{ lg: 1280, md: 1024, sm: 768, xs: 640, xxs: 0 }}
             compactType={'vertical'}
             isBounded
             // useCSSTransforms
