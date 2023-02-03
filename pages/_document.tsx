@@ -1,13 +1,11 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 import { extractCritical } from "@emotion/server";
-import { resetServerContext } from "react-beautiful-dnd";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const page = await ctx.renderPage();
     const initialProps = await Document.getInitialProps(ctx);
     const styles = extractCritical(page.html);
-    resetServerContext();
     return { ...initialProps, ...page, ...styles };
   }
 
