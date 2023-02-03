@@ -1,8 +1,7 @@
 import { Button, Group, Stack, Title } from 'livi-poc-core';
 import { useState } from 'react';
-import DraggableWidgetLayout from './draggable';
 import { DraggableGridLayout, GridItemProps } from './grid';
-import { WidgetWrapper, Widget1, Widget2, Widget3, WidgetProps } from './widgets';
+import { Widget1, Widget2, Widget3 } from './widgets';
 
 const Dashboard = () => {
     const [editMode, setEditMode] = useState(false)
