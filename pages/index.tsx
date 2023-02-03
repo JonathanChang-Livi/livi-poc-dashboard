@@ -20,6 +20,7 @@ const Home: NextPage = () => {
       gap-1 gap-2 gap-3 gap-4 gap-5
       space-x-1 space-x-2 space-x-3 space-x-4 space-x-5
       space-y-1 space-y-2 space-y-3 space-y-4 space-y-5
+      bg-slate-200 border-slate-100 my-2 text-slate-600 text-slate-700 p-5 w-1/2 pr-4 rounded-tl-lg rounded-tr-lg rounded-t-lg mr-2 border-r-2 shadow-lg grid-cols-3
       '></div>
         <Dashboard />
       </CardBody>

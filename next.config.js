@@ -20,16 +20,16 @@ const nextConfig = {
           './widgets': './component/widgets',
         },
         shared: {
-          "react": {
-            singleton: true,
-            strictVersion: true,
-            version: '18.2.0'
-          },
-          "react-dom": {
-            singleton: true,
-            strictVersion: true,
-            version: '18.2.0'
-          }
+          // "react": {
+          //   singleton: true,
+          //   strictVersion: true,
+          //   version: '18.2.0'
+          // },
+          // "react-dom": {
+          //   singleton: true,
+          //   strictVersion: true,
+          //   version: '18.2.0'
+          // }
         },
       })
     );
