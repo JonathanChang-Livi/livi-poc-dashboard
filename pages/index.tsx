@@ -10,7 +10,8 @@ const Home: NextPage = () => {
           className='my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white overflow-y-auto items-center
           bg-[#EEB155] w-3 h-3 rounded-full
           absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-black text-left font-normal  relative max-w-[150px]
-      w-full h-full
+      w-full h-full grid grid-cols-2 gap-5 my-1 my-2 h-[1px] text-blue-600 bg-primary bg-secondary
+      mx-2 w-4 h-4 rounded-[4px] mx-4 rounded-b-lg mx-3
       p-3 pt-8 p-4 mt-4 p-2 px-3
       text-base text-white bg-primary hover:scale-110 bg-secondary
        text-secondary text-sm font-semibold

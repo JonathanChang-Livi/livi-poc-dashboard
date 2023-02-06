@@ -13,6 +13,8 @@ const nextConfig = {
           widget1: `widget1@https://livi-poc-widget1.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
           widget2: `widget2@https://livi-poc-widget2.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
           widget3: `widget3@https://livi-poc-widget3.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
+          widget4: `widget4@https://livi-poc-widget4.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
+          widget5: `widget5@https://livi-poc-widget5.vercel.app/_next/static/${isServer ? 'ssr' : 'chunks'}/remoteEntry.js`,
         },
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
