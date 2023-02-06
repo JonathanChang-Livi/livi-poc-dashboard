@@ -8,7 +8,7 @@ const Dashboard = () => {
     const widgetList: GridItemProps[] = [
         { id: 'livi-poc-widget1', position: { x: 0, y: 0 }, width: { lg: 4, md: 1, sm: 1, xs: 1, xxs: 1 }, height: 2, widget: <Widget1 /> },
         { id: 'livi-poc-widget2', position: { x: 4, y: 0 }, width: { lg: 2, md: 1, sm: 1, xs: 1, xxs: 1 }, height: 3, widget: <Widget2 /> },
-        { id: 'livi-poc-widget3', position: { x: 3, y: 0 }, height: 4, widget: <Widget3 /> },
+        { id: 'livi-poc-widget3', position: { x: 3, y: 0 }, width: { lg: 4, md: 1, sm: 1, xs: 1, xxs: 1 }, height: 2, widget: <Widget3 /> },
     ]
     return (
         // <Stack spacing='xl'>
