@@ -7,7 +7,9 @@ const Home: NextPage = () => {
     <Card>
       <CardBody>
         <div style={{ display: 'none' }}
-          className='my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white overflow-y-auto
+          className='my-6 flex flex-col rounded-lg filter drop-shadow-md bg-white overflow-y-auto items-center
+          bg-[#EEB155] w-3 h-3 rounded-full
+          absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-black text-left font-normal  relative max-w-[150px]
       w-full h-full
       p-3 pt-8 p-4 mt-4 p-2 px-3
       text-base text-white bg-primary hover:scale-110 bg-secondary
@@ -20,6 +22,7 @@ const Home: NextPage = () => {
       gap-1 gap-2 gap-3 gap-4 gap-5
       space-x-1 space-x-2 space-x-3 space-x-4 space-x-5
       space-y-1 space-y-2 space-y-3 space-y-4 space-y-5
+      bg-[#EEB155] bg-[#A796CC] bg-[#88b1DB] bg-[#CD808B] bg-[#D3BC8D] 
       bg-slate-200 border-slate-100 my-2 text-slate-600 text-slate-700 p-5 w-1/2 pr-4 rounded-tl-lg rounded-tr-lg rounded-t-lg mr-2 border-r-2 shadow-lg grid-cols-3
       '></div>
         <Dashboard />

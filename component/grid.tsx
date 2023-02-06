@@ -8,7 +8,10 @@ export interface GridItemProps {
     id: string
     height: number
     width?: undefined | { [key in WindowSize]: number }
-    order: number
+    position: {
+        x: number,
+        y: number
+    }
     widget: React.ReactNode
 }
 interface GridLayoutProps {
@@ -16,27 +19,10 @@ interface GridLayoutProps {
     editMode: boolean
 }
 type WindowSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg'
-const full = { lg: 6, md: 6, sm: 2, xs: 1, xxs: 1 }
+const full = { lg: 6, md: 1, sm: 1, xs: 1, xxs: 1 }
 export const DraggableGridLayout = ({ items, editMode }: GridLayoutProps) => {
-    //   static defaultProps: Props = {
-    //     className: "layout",
-    //     rowHeight: 30,
-    //     onLayoutChange: function() {},
-    //     cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
-    //   };
-
-    //   state: State = {
-    //     currentBreakpoint: "lg",
-    //     compactType: "vertical",
-    //     mounted: false,
-    //     layouts: { lg: generateLayout() }
-    //   };
-    // onBreakpointChange = (breakpoint): void => {
-    //     this.setState({
-    //         currentBreakpoint: breakpoint
-    //     });
-    // }
-    const list = items.sort((a, b) => a.order > b.order ? 1 : -1)
+    const list = items
+    // .sort((a, b) => a.order > b.order ? 1 : -1)
     const generateLayout = (l: GridItemProps[], size: WindowSize): { i: string, w: number, h: number, x: number, y: number }[] => {
         return l.map((x, i, a) => {
             return {
