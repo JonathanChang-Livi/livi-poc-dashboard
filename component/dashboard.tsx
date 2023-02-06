@@ -1,3 +1,4 @@
+import { Button } from 'livi-poc-core';
 import { useState } from 'react';
 import { DraggableGridLayout, GridItemProps } from './grid';
 import { Widget1, Widget2, Widget3, Widget4, Widget5 } from './widgets';
@@ -22,7 +23,17 @@ const Dashboard = () => {
         //                 <Button set='secondary' className=' min-w-[80px]' onClick={() => setEditMode(false)}>Save</Button>
         //         }
         //     </Group>
-        <DraggableGridLayout items={widgetList} editMode={editMode} />
+        <div className='flex flex-col w-full'>
+            <div className='flex flex-row justify-end w-full my-2'>
+                {
+                    !editMode ?
+                        <Button set='primary' className=' min-w-[80px]' onClick={() => setEditMode(true)}>Edit</Button>
+                        :
+                        <Button set='secondary' className=' min-w-[80px]' onClick={() => setEditMode(false)}>Save</Button>
+                }
+            </div>
+            <DraggableGridLayout items={widgetList} editMode={editMode} />
+        </div>
         // </Stack>
     )
 }
